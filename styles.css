@@ -1,0 +1,39 @@
+* { box-sizing: border-box; }
+:root { color-scheme: light; font-family: Arial, "Microsoft YaHei", sans-serif; color: #111; background: #fff; }
+body { margin: 0; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 260px; width: 100%; height: 100vh; height: 100dvh; }
+.canvas-area { min-width: 0; min-height: 0; }
+#canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; }
+aside { display: flex; flex-direction: column; min-height: 0; padding: 24px 18px; border-left: 1px solid #ccc; font-size: 13px; }
+input { font: inherit; color: #111; background: #fff; accent-color: #111; }
+input[type="number"] { width: 100%; min-width: 0; padding: 7px 6px; border: 1px solid #bbb; border-radius: 0; font-variant-numeric: tabular-nums; }
+input:focus-visible, #canvas:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+.count-field, .parameter-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.count-field input { width: 66px; }
+.table-heading, .point-row { display: grid; grid-template-columns: 25px minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: center; }
+.table-heading { margin-top: 24px; padding-bottom: 8px; font-family: Georgia, serif; text-align: center; }
+#points-list { min-height: 0; overflow: auto; scrollbar-width: thin; padding: 2px; margin: 0 -2px; }
+.point-row { margin-bottom: 8px; }
+.point-label { font-family: Georgia, serif; white-space: nowrap; }
+.point-label sub { font-size: 9px; }
+.coordinate { appearance: textfield; -moz-appearance: textfield; }
+.coordinate::-webkit-inner-spin-button { appearance: none; }
+.point-row.selected .point-label { font-weight: bold; }
+.parameter-field { margin-top: 24px; padding-top: 20px; border-top: 1px solid #ddd; }
+.parameter-heading input { width: 82px; }
+#parameter { display: block; width: 100%; margin: 18px 0 8px; height: 5px; cursor: pointer; }
+.range-labels { display: flex; justify-content: space-between; font-size: 11px; color: #555; }
+.control-handle { cursor: grab; outline: none; }
+.control-handle:active { cursor: grabbing; }
+.control-handle:focus-visible .handle-ring { opacity: 1; stroke-width: 2; }
+#error { margin: 18px 0 0; line-height: 1.7; color: #111; font-size: 12px; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+  main { height: auto; min-height: 100vh; min-height: 100dvh; grid-template-columns: 1fr; }
+  .canvas-area { height: 55vh; height: 55dvh; min-height: 300px; }
+  aside { border-left: none; border-top: 1px solid #ccc; padding: 20px; }
+  #points-list { max-height: 270px; }
+  .table-heading, .point-row { grid-template-columns: 32px minmax(0, 1fr) minmax(0, 1fr); }
+  .parameter-field { margin-top: 16px; }
+  input[type="number"] { padding: 9px 8px; }
+}

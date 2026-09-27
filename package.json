@@ -1,0 +1,11 @@
+{
+  "name": "bezier-curve-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "计算机辅助几何设计作业：交互式贝塞尔曲线生成器",
+  "scripts": {
+    "start": "node tools/serve.cjs",
+    "test": "node --test tests/bezier.test.cjs"
+  },
+  "engines": { "node": ">=18" }
+}

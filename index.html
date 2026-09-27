@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>贝塞尔曲线</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 27C3 0 29 0 29 27' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="src/bezier.js"></script>
+  <script defer src="src/app.js"></script>
+</head>
+<body>
+  <main>
+    <div class="canvas-area">
+      <svg id="canvas" role="group" aria-label="贝塞尔曲线画布，可拖动控制点" tabindex="0">
+        <title>贝塞尔曲线与 de Casteljau 构造过程</title>
+        <defs><clipPath id="plot-clip"><rect id="clip-rect"></rect></clipPath></defs>
+        <g id="grid-layer"></g>
+        <g clip-path="url(#plot-clip)">
+          <g id="polygon-layer"></g>
+          <g id="curve-layer"></g>
+          <g id="construction-layer"></g>
+          <g id="handles-layer"></g>
+          <g id="current-layer" pointer-events="none"></g>
+        </g>
+      </svg>
+    </div>
+    <aside aria-label="曲线参数">
+      <div class="count-field"><label for="point-count">控制点数量</label><input id="point-count" type="number" min="2" max="32" step="1" value="4"></div>
+      <div class="table-heading" aria-hidden="true"><span></span><span>x</span><span>y</span></div>
+      <div id="points-list" aria-label="控制点坐标"></div>
+      <div class="parameter-field">
+        <div class="parameter-heading"><label for="parameter-number">参数 t</label><input id="parameter-number" type="number" min="0" max="1" step="0.001" value="0.35"></div>
+        <input id="parameter" type="range" min="0" max="1" step="0.001" value="0.35" aria-label="调整参数 t">
+        <div class="range-labels" aria-hidden="true"><span>0</span><span>1</span></div>
+      </div>
+      <p id="error" role="status" aria-live="polite" hidden></p>
+    </aside>
+  </main>
+  <noscript>请启用 JavaScript。</noscript>
+</body>
+</html>
